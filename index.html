@@ -7,61 +7,72 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h1>Bilbao Touristenführer</h1>
-
-    <h2 class="willkommen"> Willkommen in Bilbao! Eine tolle Stadt im Norden Spaniens mit jeder Menge neuer Kultur, vielen Sehenswürdigkeiten und mit einer großen Auswahl an typisch spanischen Gerichten!</h2>
+    
+    <header>
+      <h1>Bilbao Touristenführer</h1>
+      <h2 class="willkommen"> Willkommen in Bilbao! Eine tolle Stadt im Norden Spaniens mit jeder Menge neuer Kultur, vielen Sehenswürdigkeiten und typisch spanischen Gerichten!</h2>
+    </header>
     
     <div class="divider"></div>
     
-    <h3 class="sehenswuerdigkeiten-titel">Sehenswürdigkeiten:</h3>
+    <section class="sehenswuerdigkeiten">
+      <h3 class="sektion-titel">Sehenswürdigkeiten</h3>
+      
+      <div class="karten-container">
+        <div class="karte">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/c9/87/72/vista-desde-la-ria.jpg?w=900&h=500&s=1" alt="Guggenheim">
+          <p class="karte-text">Guggenheim</p>
+        </div>
+        
+        <div class="karte">
+          <img src="https://imageserver.stadionwelt.de/Image/d/f/9fe2e233974ba2b212faf22fbc1ad2d4b48f1081b99e4985204677f35220f5/Bilbao_San%20Mames_Athletic%20Bilbao_Nacht.jpg" alt="San Mames">
+          <p class="karte-text">San Mames</p>
+        </div>
+        
+        <div class="karte">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Casco_viejo_de_Bilbao_%281%29.jpg" alt="Arriaga Theater">
+          <p class="karte-text">Arriaga Theater</p>
+        </div>
+      </div>
     
-    <div class="bilder-container">
-      <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/c9/87/72/vista-desde-la-ria.jpg?w=900&h=500&s=1" alt="Bild 1">
-      <img src="https://imageserver.stadionwelt.de/Image/d/f/9fe2e233974ba2b212faf22fbc1ad2d4b48f1081b99e4985204677f35220f5/Bilbao_San%20Mames_Athletic%20Bilbao_Nacht.jpg" alt="Bild 2">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Casco_viejo_de_Bilbao_%281%29.jpg" alt="Bild 3">
-    </div>
-  
-    <div class="text-container">
-      <p class="text1">Guggenheim</p>
-      <p class="text2">San Mames</p>
-      <p class="text3">Arriaga Theater</p>
-    </div>
-  
-    <div class="info-kasten">
-      <p> Bilbaos 3 bekanntesten Sehenswürdigkeiten die man einfach gesehen haben muss sind das Guggenheim Museum, das San Mames Stadium und das Arriaga Theater. Fangen wir mit dem Guggenheim Museum an: Das Guggenheim Museum wurde 1993 von dem Architekt Frank O. Gehry geplant und 1997 fertigestellt. Es hat viele bekannte Skulpturen wie unter anderem „Puppy“ von Jeff Koons und ist damit die bekannteste Sehenswürdigkeit Bilbaos! Machen wir mit dem San Mames Stadium weiter: Erstmal der Verein denn der sogenannte Athletic Club nimmt nur Spieler die im Baskenland geboren wurden und ist damit nicht nur einer der wenigen Vereine die das macht sondern er ist auch trotzdessen einer der besten Vereine Spaniens! Jetzt zum San Mames Stadium, was in Bilbaos Innenstadt liegt und mit 53.000 eine inmense Stadiumkapazität hat. Es wurde 2013 für 173mio. Euro gebaut und 2016 nochmal für 33mio. Euro renoviert. Hier auch die drei Links für die Eintrittskarten:  
-        <a href="https://www.getyourguide.de/bilbao-l93/bilbao-guggenheim-vip-erlebnis-kleine-gruppe-erfahrener-guide-t309033/?ranking_uuid=ec31d14b-ccf5-48a2-a1ec-f9e8520369b0" target="_blank"> Guggenheimmuseum,</a>
-        <a href="https://www.getyourguide.de/bilbao-l93/bilbao-san-mames-museum-und-stadion-tour-t244327/?ranking_uuid=97952942-4e04-47ac-aa56-2b57bc60e1a4" target="_blank">San Mames,</a>
-        <a href="https://www.getyourguide.de/bilbao-l93/besichtigung-der-architektur-und-der-kirchen-von-bilbao-t878729/?ranking_uuid=769ab258-7d5e-4190-a3e2-91e85167ade8" target="_blank">Arriaga Theater mit Tourguide</a>
-      </p>
+      <div class="info-kasten">
+        <p>Bilbaos 3 bekannteste Sehenswürdigkeiten, die man einfach gesehen haben muss, sind das Guggenheim Museum, das San Mames Stadium und das Arriaga Theater.<br><br>
+        <strong>Guggenheim Museum:</strong> Wurde 1993 vom Architekten Frank O. Gehry geplant und 1997 fertiggestellt. Bekannt für Skulpturen wie „Puppy“ von Jeff Koons.<br><br>
+        <strong>San Mames Stadium:</strong> Heimat des Athletic Club, der nur Spieler aus dem Baskenland aufnimmt. Das Stadion liegt in der Innenstadt, fasst 53.000 Zuschauer und wurde 2013 neu gebaut.<br><br>
+        <strong>Hier gibt es Tickets:</strong><br>
+          <a href="https://www.getyourguide.de/..." target="_blank">Guggenheimmuseum</a> | 
+          <a href="https://www.getyourguide.de/..." target="_blank">San Mames</a> | 
+          <a href="https://www.getyourguide.de/..." target="_blank">Arriaga Theater</a>
+        </p>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="geschichte">
+      <h2 class="sektion-titel">Geschichte</h2>
+      
+      <div class="geschichte-container">
+        <ul class="geschichte-liste">
+          <li>
+            <strong>1. Gründung & Handelsstadt (1300–19. Jahrhundert)</strong><br>
+            Bilbao wurde 1300 von Diego López V de Haro gegründet. Dank der Lage am Fluss Nervión entwickelte sich die Stadt rasch zu einem wichtigen Handelszentrum für Eisen und Wolle.
+          </li>
+          <li>
+            <strong>2. Industrie & Wachstum (19.–20. Jahrhundert)</strong><br>
+            Im 19. Jahrhundert wurde Bilbao zu einer der wichtigsten Industriestädte Spaniens. Eisen- und Stahlindustrie boomten, Werften entstanden und viele Menschen zogen in die Stadt.
+          </li>
+        </ul>
+        
+        <div class="geschichte-bilder">
+          <img src="https://thumbs.dreamstime.com/b/%C3%B6l-und-gasindustrieraffinerie-nahe-dem-see-schwarzweiss-103261055.jpg" alt="Industrie Bilbao">
+        </div>
+      </div>
+    </section>
+
+    <div class="unterseite-link-box">
+      <a href="unterseite.html" class="button-link">Mehr erfahren auf der Unterseite ➔</a>
     </div>
 
-    <div>
-      <h2 class="geschichte-titel">Geschichte</h2>
-      
-      <ul class="geschichte-liste">
-        <li class="geschichte-teil-1">
-          1️⃣ Gründung & Handelsstadt (1300–19. Jahrhundert)<br>
-          Bilbao wurde 1300 von Diego López V de Haro gegründet. Dank seiner Lage am Fluss Nervión entwickelte sich die Stadt rasch zu einem wichtigen Handelszentrum, besonders für Eisen und Wolle. Der Hafen machte Bilbao zu einer der bedeutendsten Wirtschaftsmetropolen Nordspaniens.
-        </li>
-      </ul>
-
-      <img class="bild-geschichte-1" src="https://lh3.googleusercontent.com/proxy/MP9rpOAE9BjDy7Q1Fgdpc94OTdvYqbQrXleefQae2mbH65Z7BzHoFfGZ7-qnzqRE_pHNf369OKvbDh13CjKte7o96gRDwjdLpZsHdtEXAjrAyXR0cprhDbHPN1-Hurlf" alt="Profilbild">
-      
-      <ul class="geschichte-liste">
-        <li class="geschichte-teil-2">
-          2️⃣ Industrie & Wachstum (19.–20. Jahrhundert)<br><br>
-          Im 19. Jahrhundert wurde Bilbao zu einer der wichtigsten Industriestädte Spaniens.<br>
-          - Eisen- und Stahlindustrie boomten<br>
-          - Werften und Banken entstanden<br>
-          - Viele Menschen zogen wegen der Arbeit in die Stadt<br>
-          - Bilbao wurde zu einem Zentrum der spanischen Industrie.
-        </li>
-      </ul>
-   
-      <img class="bild-geschichte-2" src="https://thumbs.dreamstime.com/b/%C3%B6l-und-gasindustrieraffinerie-nahe-dem-see-schwarzweiss-103261055.jpg" alt="Raffinerie">
-    </div>
   </body>
 </html>
-
-
-
