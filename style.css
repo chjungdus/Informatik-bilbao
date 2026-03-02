@@ -1,147 +1,194 @@
-/* ALLGEMEINES */
+/* =====================================
+   ALLGEMEINES
+====================================== */
 body {
-  color: black;
-  /* Deine 3 Bilder sind zurück! */
-  background-image: 
-    url(https://as2.ftcdn.net/jpg/04/83/55/81/1000_F_483558100_OPckPgOSlTGZ6AoDbYIAEFhsPshnhQXR.jpg),
-    url(https://static.barcelo.com/content/dam/bpt/posts/2025/2/bilbao-sehenswuerdigkeiten_bilbao-kurztrip.jpg),
-    url(https://img.nzz.ch/2024/04/04/2dc47301-113f-4285-884c-0e5d2ab83e22.jpeg?width=1200&height=675&fit=bounds&quality=75&auto=webp&crop=1920,1080,x0,y0&wmark=nzz);
-  background-size: 2800px, 2750px, 3000px;
-  background-repeat: no-repeat, no-repeat, no-repeat;
-  /* Ich habe die Prozente angepasst, damit sie sich über die lange Seite verteilen */
-  background-position: center 0%, center 45%, center 95%;
-  min-height: 400vh; /* Macht die Seite extra lang für die Bilder */
-  font-family: 'Montserrat', sans-serif;
-  text-align: center; 
   margin: 0;
   padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
 }
 
-h1 {
-  font-size: 80px;
-  font-weight: 700;
-  color: white;
-  text-decoration: underline;  
-  margin-top: 50px;
-  backdrop-filter: blur(6px);
-  background-color: rgba(0, 0, 0, 0.4);
-  display: inline-block;
-  padding: 20px;
-  border: 10px solid white;
-}
-
-h4 {
-  color: white;
-  font-size: 40px;
-  margin: 50px auto;
-  max-width: 1000px;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 20px;
-  border: 5px solid white;
-}
-
-h5 {
-  font-size: 60px;
-  color: black;
-  background-color: white;
-  display: inline-block;
-  padding: 10px 30px;
-  border: 10px solid black;
-  margin-top: 80px;
-}
-
-.divider {
-  width: 80%;
-  height: 15px;
-  background: black;
-  margin: 50px auto;
+h2 {
+  text-align: center;
+  font-size: 45px;
+  margin-bottom: 40px;
+  color: #222;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 a {
-  color: blue;
+  color: #e63946;
+  text-decoration: none;
   font-weight: bold;
 }
 
-/* DEINE BILDER & TEXTE */
-.bilder-container {
-  display: flex;
-  justify-content: center;
-  gap: 50px;              
-  margin-top: 20px;
-  flex-wrap: wrap; 
+a:hover {
+  text-decoration: underline;
 }
 
-.bilder-container img {
-  width: 400px;          
-  border-radius: 10px;   
-  border: 10px solid white;
-  display: block; /* Damit das Bild unter dem Text steht */
+/* =====================================
+   PARALLAX HINTERGRUNDBILDER (Dein Upgrade!)
+====================================== */
+.parallax-bereich {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Hier sind deine 3 Original-Bilder! */
+.bild-1 {
+  background-image: url('https://as2.ftcdn.net/jpg/04/83/55/81/1000_F_483558100_OPckPgOSlTGZ6AoDbYIAEFhsPshnhQXR.jpg');
+  min-height: 100vh; /* Volle Bildschirmhöhe */
+}
+
+.bild-2 {
+  background-image: url('https://static.barcelo.com/content/dam/bpt/posts/2025/2/bilbao-sehenswuerdigkeiten_bilbao-kurztrip.jpg');
+  min-height: 60vh; /* Halbe Bildschirmhöhe als cooler Trenner */
+}
+
+.bild-3 {
+  background-image: url('https://img.nzz.ch/2024/04/04/2dc47301-113f-4285-884c-0e5d2ab83e22.jpeg?width=1200&height=675&fit=bounds&quality=75&auto=webp&crop=1920,1080,x0,y0&wmark=nzz');
+  min-height: 80vh;
+}
+
+/* Textboxen auf den Hintergrundbildern */
+.titel-box {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 40px 60px;
+  border-radius: 15px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  text-align: center;
+  backdrop-filter: blur(5px);
+  max-width: 800px;
+}
+
+.titel-box h1 {
+  color: white;
+  font-size: 70px;
+  margin: 0 0 20px 0;
+}
+
+.willkommen {
+  color: #f1faee;
+  font-size: 24px;
+  line-height: 1.6;
+}
+
+/* =====================================
+   WEISSE INHALTS-BEREICHE
+====================================== */
+.inhalt {
+  background-color: white;
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
+}
+
+/* =====================================
+   SEHENSWÜRDIGKEITEN (Karten-Layout)
+====================================== */
+.karten-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.karte {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+  width: 350px;
+  border: 1px solid #ddd;
+}
+
+.karte:hover {
+  transform: translateY(-15px); /* Hebt die Karte beim Hovern an! */
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.karte img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.karte h3 {
+  text-align: center;
+  font-size: 26px;
+  margin: 15px 0;
+  color: #1d3557;
+}
+
+.info-kasten {
+  background-color: #f8f9fa;
+  padding: 30px;
+  border-left: 8px solid #e63946;
+  margin-top: 50px;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+/* =====================================
+   GESCHICHTE
+====================================== */
+.geschichte-liste {
+  list-style-type: none;
+  padding: 0;
+  max-width: 900px;
   margin: 0 auto;
 }
 
-.bilder-container img:hover {  
-  transform: scale(1.1);
-  transition: transform 0.5s;
-  border-color: black;
+.geschichte-liste li {
+  background: #f1faee;
+  margin-bottom: 20px;
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid #a8dadc;
+  font-size: 20px;
+  line-height: 1.6;
 }
 
-.text1, .text2, .text3 {
-  color: black;
-  font-size: 40px;
-  font-weight: bold;
-  background-color: white;
+.geschichte-bilder {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.geschichte-bilder img {
+  width: 45%;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* =====================================
+   BUTTON ZUR UNTERSEITE
+====================================== */
+.action-button {
   display: inline-block;
-  border: 10px solid black;
-  margin-bottom: 10px; /* Abstand zum Bild darunter */
-  padding: 10px 20px;
-}
-
-/* DIE GROSSEN TEXTBOXEN (Info & Geschichte) */
-.text-container, .geschichte-liste {
-  margin: 50px auto;
-  max-width: 1200px;
-  padding: 20px;
-  list-style-type: none; 
-}
-
-h2, .geschichte-teil-1, .geschichte-teil-2 {
-  font-size: 35px;
-  text-align: left;
-  display: inline-block;
-  backdrop-filter: blur(6px);
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 15px solid black;
-  padding: 30px;
-  color: black;
-}
-
-/* BILDER IN DER GESCHICHTE */
-.bild-geschichte-1, .bild-geschichte-2 {
-  width: 600px;
-  border: 15px solid white;
-  margin: 40px 0;
-}
-
-/* DIE BUTTONS ZUM SEITENWECHSELN */
-.link-box {
-  margin: 100px 0;
-  padding-bottom: 100px;
-}
-
-.seiten-link {
-  font-size: 40px;
-  background-color: white;
-  color: black;
-  text-decoration: none;
-  border: 15px solid black;
-  padding: 20px 40px;
-  display: inline-block;
-}
-
-.seiten-link:hover {
-  transform: scale(1.1);
-  transition: transform 0.5s;
-  background-color: black;
+  background-color: #e63946;
   color: white;
-  border-color: white;
+  font-size: 30px;
+  padding: 20px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s;
+  border: 3px solid transparent;
+}
+
+.action-button:hover {
+  background-color: white;
+  color: #e63946;
+  border: 3px solid #e63946;
 }
