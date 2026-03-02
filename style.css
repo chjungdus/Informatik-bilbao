@@ -1,0 +1,115 @@
+/* =========================================
+   1. ALLGEMEINE TAGS (body, h1, h2, h3, p)
+   ========================================= */
+body {
+  min-height: 650vh;
+  color: black;
+  background-image: 
+    url(https://as2.ftcdn.net/jpg/04/83/55/81/1000_F_483558100_OPckPgOSlTGZ6AoDbYIAEFhsPshnhQXR.jpg),
+    url(https://static.barcelo.com/content/dam/bpt/posts/2025/2/bilbao-sehenswuerdigkeiten_bilbao-kurztrip.jpg),
+    url(https://img.nzz.ch/2024/04/04/2dc47301-113f-4285-884c-0e5d2ab83e22.jpeg?width=1200&height=675&fit=bounds&quality=75&auto=webp&crop=1920,1080,x0,y0&wmark=nzz);
+  background-size: 2800px, 2750px, 3000px;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position: center 0%, center 20%, center 110%;
+}
+
+h1 {
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 100px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: white;
+  text-decoration: underline;  
+}
+
+h2.willkommen {
+  color: white;
+  font-size: 70px;
+  margin-top: 80px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+h2.geschichte-titel {
+  text-align: center;
+  margin-top: 120px;
+  color: black;
+  font-size: 70px;
+  background-color: white;
+  margin-bottom: 5px;
+}
+
+h3.sehenswuerdigkeiten-titel {
+  text-align: center;
+  font-size: 70px;
+  color: black;
+  margin-top: 280px;
+  margin-bottom: 1px;
+}
+
+a {
+  color: blue;
+}
+
+/* =========================================
+   2. KLASSEN FÜR DAS LAYOUT & BILDER
+   ========================================= */
+.divider {
+  width: 190%;
+  height: 30px;
+  background: black;
+  margin: 155px auto;
+  position: absolute;
+  right: 2px;
+}
+
+.bilder-container {
+  display: flex;
+  justify-content: center;
+  gap: 110px;              
+  margin-top: 200px;    
+}
+
+.bilder-container img {
+  width: 500px;          
+  border-radius: 10px;   
+  border: none;
+}
+
+.bilder-container img:hover {  
+  transform: scale(1.5);
+  transition: transform 0.5s;
+}
+
+.text-container {
+  display: flex;
+  font-size: 100px;
+}
+
+.text1, .text2, .text3 {
+  color: black;
+  font-size: 50px;
+  font-weight: bold;
+  top: 940px;
+  position: absolute; 
+  display: inline-block;
+  background-color: white;
+  margin: 0;
+}
+
+.text1 { right: 1420px; }
+.text2 { right: 830px; }
+.text3 { right: 170px; }
+
+/* Die große Info-Box (früher h2) */
+.info-kasten p {
+  font-size: 40px;
+  text-align: center;
+  display: inline-block;
+  backdrop-filter: blur(6px);
+  border: 15px solid black;
+  margin: 0;
+}
+
+/* =================
