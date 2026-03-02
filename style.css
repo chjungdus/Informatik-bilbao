@@ -1,115 +1,180 @@
 /* =========================================
-   1. ALLGEMEINE TAGS (body, h1, h2, h3, p)
+   1. GRUNDGERÜST (Keine extremen Höhen mehr!)
    ========================================= */
 body {
-  min-height: 650vh;
-  color: black;
-  background-image: 
-    url(https://as2.ftcdn.net/jpg/04/83/55/81/1000_F_483558100_OPckPgOSlTGZ6AoDbYIAEFhsPshnhQXR.jpg),
-    url(https://static.barcelo.com/content/dam/bpt/posts/2025/2/bilbao-sehenswuerdigkeiten_bilbao-kurztrip.jpg),
-    url(https://img.nzz.ch/2024/04/04/2dc47301-113f-4285-884c-0e5d2ab83e22.jpeg?width=1200&height=675&fit=bounds&quality=75&auto=webp&crop=1920,1080,x0,y0&wmark=nzz);
-  background-size: 2800px, 2750px, 3000px;
-  background-repeat: no-repeat, no-repeat, no-repeat;
-  background-position: center 0%, center 20%, center 110%;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  background-image: url('https://as2.ftcdn.net/jpg/04/83/55/81/1000_F_483558100_OPckPgOSlTGZ6AoDbYIAEFhsPshnhQXR.jpg');
+  background-size: cover;
+  background-attachment: fixed; /* Hintergrund bleibt beim Scrollen stehen */
+  background-position: center;
+}
+
+header {
+  background-color: rgba(0, 0, 0, 0.7); /* Leicht durchsichtig schwarz */
+  padding: 40px 20px;
+  text-align: center;
 }
 
 h1 {
-  margin-bottom: 30px;
-  text-align: center;
-  font-size: 100px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
+  font-size: 60px;
   color: white;
-  text-decoration: underline;  
+  text-decoration: underline;
+  margin: 0 0 20px 0;
 }
 
 h2.willkommen {
   color: white;
-  font-size: 70px;
-  margin-top: 80px;
-  margin-bottom: 50px;
-  text-align: center;
-}
-
-h2.geschichte-titel {
-  text-align: center;
-  margin-top: 120px;
-  color: black;
-  font-size: 70px;
-  background-color: white;
-  margin-bottom: 5px;
-}
-
-h3.sehenswuerdigkeiten-titel {
-  text-align: center;
-  font-size: 70px;
-  color: black;
-  margin-top: 280px;
-  margin-bottom: 1px;
-}
-
-a {
-  color: blue;
+  font-size: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.5;
 }
 
 /* =========================================
-   2. KLASSEN FÜR DAS LAYOUT & BILDER
+   2. LAYOUT & ELEMENTE
    ========================================= */
 .divider {
-  width: 190%;
-  height: 30px;
+  height: 10px;
   background: black;
-  margin: 155px auto;
-  position: absolute;
-  right: 2px;
+  margin: 40px 0;
 }
 
-.bilder-container {
+.sektion-titel {
+  text-align: center;
+  font-size: 45px;
+  color: black;
+  background-color: white;
+  display: inline-block;
+  padding: 10px 30px;
+  margin: 0 auto 40px auto;
+  border: 5px solid black;
+  border-radius: 5px;
+  display: block;
+  width: fit-content;
+}
+
+/* =========================================
+   3. BILDER-KARTEN (Flexbox verhindert Verrutschen)
+   ========================================= */
+.karten-container {
   display: flex;
   justify-content: center;
-  gap: 110px;              
-  margin-top: 200px;    
+  flex-wrap: wrap; /* Bricht um, wenn der Bildschirm kleiner wird */
+  gap: 40px;
+  padding: 20px;
 }
 
-.bilder-container img {
-  width: 500px;          
-  border-radius: 10px;   
-  border: none;
-}
-
-.bilder-container img:hover {  
-  transform: scale(1.5);
-  transition: transform 0.5s;
-}
-
-.text-container {
-  display: flex;
-  font-size: 100px;
-}
-
-.text1, .text2, .text3 {
-  color: black;
-  font-size: 50px;
-  font-weight: bold;
-  top: 940px;
-  position: absolute; 
-  display: inline-block;
+.karte {
   background-color: white;
-  margin: 0;
-}
-
-.text1 { right: 1420px; }
-.text2 { right: 830px; }
-.text3 { right: 170px; }
-
-/* Die große Info-Box (früher h2) */
-.info-kasten p {
-  font-size: 40px;
+  padding: 15px;
+  border: 5px solid black;
+  border-radius: 10px;
   text-align: center;
-  display: inline-block;
-  backdrop-filter: blur(6px);
-  border: 15px solid black;
-  margin: 0;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
 }
 
-/* =================
+.karte img {
+  width: 350px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 5px;
+  transition: transform 0.4s;
+}
+
+.karte img:hover {  
+  transform: scale(1.05);
+  border: 3px solid gold; /* Cooler Hover-Effekt */
+}
+
+.karte-text {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 15px 0 0 0;
+  color: black;
+}
+
+/* =========================================
+   4. INFO-KASTEN & LINKS
+   ========================================= */
+.info-kasten {
+  background-color: rgba(255, 255, 255, 0.9);
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 30px;
+  border: 5px solid black;
+  border-radius: 10px;
+  font-size: 22px;
+  line-height: 1.6;
+}
+
+a {
+  color: #0056b3;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: red;
+}
+
+/* =========================================
+   5. GESCHICHTE
+   ========================================= */
+.geschichte-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 20px;
+}
+
+.geschichte-liste {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  max-width: 600px;
+  padding: 30px 40px;
+  border: 5px solid white;
+  font-size: 22px;
+  line-height: 1.6;
+  list-style-type: none; /* Versteckt die normalen Punkte */
+}
+
+.geschichte-liste li {
+  margin-bottom: 25px;
+}
+
+.geschichte-bilder img {
+  width: 450px;
+  border: 10px solid white;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+}
+
+/* =========================================
+   6. UNTERSEITE BUTTON
+   ========================================= */
+.unterseite-link-box {
+  text-align: center;
+  margin: 60px 0;
+}
+
+.button-link {
+  background-color: black;
+  color: white;
+  font-size: 30px;
+  padding: 15px 40px;
+  border: 5px solid white;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+
+.button-link:hover {
+  background-color: white;
+  color: black;
+  border-color: black;
+  text-decoration: none;
+}
