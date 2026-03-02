@@ -1,180 +1,138 @@
-/* =========================================
-   1. GRUNDGERÜST (Keine extremen Höhen mehr!)
-   ========================================= */
+/* ALLGEMEINES */
 body {
-  font-family: 'Arial', sans-serif;
-  color: #333;
+  color: black;
+  /* Nur noch das eine Bilbao-Hintergrundbild, dafür bildschirmfüllend */
+  background-image: url(https://as2.ftcdn.net/jpg/04/83/55/81/1000_F_483558100_OPckPgOSlTGZ6AoDbYIAEFhsPshnhQXR.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center; /* Macht alles automatisch mittig! */
   margin: 0;
   padding: 0;
-  background-image: url('https://as2.ftcdn.net/jpg/04/83/55/81/1000_F_483558100_OPckPgOSlTGZ6AoDbYIAEFhsPshnhQXR.jpg');
-  background-size: cover;
-  background-attachment: fixed; /* Hintergrund bleibt beim Scrollen stehen */
-  background-position: center;
-}
-
-header {
-  background-color: rgba(0, 0, 0, 0.7); /* Leicht durchsichtig schwarz */
-  padding: 40px 20px;
-  text-align: center;
 }
 
 h1 {
+  font-size: 80px;
+  font-weight: 700;
+  color: white;
+  text-decoration: underline;  
+  margin-top: 50px;
+  /* Dein verschwommener Style, damit man es lesen kann: */
+  backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.4);
+  display: inline-block;
+  padding: 20px;
+  border: 10px solid white;
+}
+
+h4 {
+  color: white;
+  font-size: 40px;
+  margin: 50px auto;
+  max-width: 1000px;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border: 5px solid white;
+}
+
+h5, h3 {
   font-size: 60px;
-  color: white;
-  text-decoration: underline;
-  margin: 0 0 20px 0;
-}
-
-h2.willkommen {
-  color: white;
-  font-size: 24px;
-  max-width: 900px;
-  margin: 0 auto;
-  line-height: 1.5;
-}
-
-/* =========================================
-   2. LAYOUT & ELEMENTE
-   ========================================= */
-.divider {
-  height: 10px;
-  background: black;
-  margin: 40px 0;
-}
-
-.sektion-titel {
-  text-align: center;
-  font-size: 45px;
   color: black;
   background-color: white;
   display: inline-block;
   padding: 10px 30px;
-  margin: 0 auto 40px auto;
-  border: 5px solid black;
-  border-radius: 5px;
-  display: block;
-  width: fit-content;
+  border: 10px solid black;
 }
 
-/* =========================================
-   3. BILDER-KARTEN (Flexbox verhindert Verrutschen)
-   ========================================= */
-.karten-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap; /* Bricht um, wenn der Bildschirm kleiner wird */
-  gap: 40px;
-  padding: 20px;
-}
-
-.karte {
-  background-color: white;
-  padding: 15px;
-  border: 5px solid black;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
-}
-
-.karte img {
-  width: 350px;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 5px;
-  transition: transform 0.4s;
-}
-
-.karte img:hover {  
-  transform: scale(1.05);
-  border: 3px solid gold; /* Cooler Hover-Effekt */
-}
-
-.karte-text {
-  font-size: 28px;
-  font-weight: bold;
-  margin: 15px 0 0 0;
-  color: black;
-}
-
-/* =========================================
-   4. INFO-KASTEN & LINKS
-   ========================================= */
-.info-kasten {
-  background-color: rgba(255, 255, 255, 0.9);
-  max-width: 1000px;
-  margin: 40px auto;
-  padding: 30px;
-  border: 5px solid black;
-  border-radius: 10px;
-  font-size: 22px;
-  line-height: 1.6;
+.divider {
+  width: 80%;
+  height: 15px;
+  background: black;
+  margin: 50px auto;
 }
 
 a {
-  color: #0056b3;
+  color: blue;
   font-weight: bold;
-  text-decoration: none;
 }
 
-a:hover {
-  text-decoration: underline;
-  color: red;
-}
-
-/* =========================================
-   5. GESCHICHTE
-   ========================================= */
-.geschichte-container {
+/* DEINE BILDER & TEXTE (Jetzt sicher im Flexbox-Layout) */
+.bilder-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 40px;
-  padding: 20px;
+  gap: 50px;              
+  margin-top: 50px;
+  flex-wrap: wrap; /* Bricht um, wenn der Bildschirm zu klein ist */
 }
 
-.geschichte-liste {
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  max-width: 600px;
-  padding: 30px 40px;
-  border: 5px solid white;
-  font-size: 22px;
-  line-height: 1.6;
-  list-style-type: none; /* Versteckt die normalen Punkte */
-}
-
-.geschichte-liste li {
-  margin-bottom: 25px;
-}
-
-.geschichte-bilder img {
-  width: 450px;
+.bilder-container img {
+  width: 400px;          
+  border-radius: 10px;   
   border: 10px solid white;
-  box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
 }
 
-/* =========================================
-   6. UNTERSEITE BUTTON
-   ========================================= */
-.unterseite-link-box {
-  text-align: center;
-  margin: 60px 0;
+.bilder-container img:hover {  
+  transform: scale(1.1);
+  transition: transform 0.5s;
+  border-color: black;
 }
 
-.button-link {
-  background-color: black;
-  color: white;
-  font-size: 30px;
-  padding: 15px 40px;
-  border: 5px solid white;
-  border-radius: 10px;
-  transition: all 0.3s;
+.text1, .text2, .text3 {
+  color: black;
+  font-size: 40px;
+  font-weight: bold;
+  background-color: white;
+  display: inline-block;
+  border: 10px solid black;
+  margin-top: 15px;
+  padding: 10px 20px;
 }
 
-.button-link:hover {
+/* DIE GROSSEN TEXTBOXEN (Info & Geschichte) */
+.text-container, .geschichte-liste {
+  margin: 50px auto;
+  max-width: 1200px;
+  padding: 20px;
+  list-style-type: none; /* Macht die Punkte bei der Liste weg */
+}
+
+h2, .geschichte-teil-1, .geschichte-teil-2 {
+  font-size: 35px;
+  text-align: left;
+  display: inline-block;
+  backdrop-filter: blur(6px);
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 15px solid black;
+  padding: 30px;
+  color: black;
+}
+
+/* BILDER IN DER GESCHICHTE */
+.bild-geschichte-1, .bild-geschichte-2 {
+  width: 600px;
+  border: 15px solid white;
+  margin: 40px 0;
+}
+
+/* DIE BUTTONS ZUM SEITENWECHSELN */
+.link-box {
+  margin: 100px 0;
+}
+
+.seiten-link {
+  font-size: 50px;
   background-color: white;
   color: black;
-  border-color: black;
   text-decoration: none;
+  border: 15px solid black;
+  padding: 20px 40px;
+  display: inline-block;
+}
+
+.seiten-link:hover {
+  transform: scale(1.1);
+  transition: transform 0.5s;
+  background-color: black;
+  color: white;
+  border-color: white;
 }
