@@ -1,12 +1,18 @@
 /* ALLGEMEINES */
 body {
   color: black;
-  /* Nur noch das eine Bilbao-Hintergrundbild, dafür bildschirmfüllend */
-  background-image: url(https://as2.ftcdn.net/jpg/04/83/55/81/1000_F_483558100_OPckPgOSlTGZ6AoDbYIAEFhsPshnhQXR.jpg);
-  background-size: cover;
-  background-attachment: fixed;
+  /* Deine 3 Bilder sind zurück! */
+  background-image: 
+    url(https://as2.ftcdn.net/jpg/04/83/55/81/1000_F_483558100_OPckPgOSlTGZ6AoDbYIAEFhsPshnhQXR.jpg),
+    url(https://static.barcelo.com/content/dam/bpt/posts/2025/2/bilbao-sehenswuerdigkeiten_bilbao-kurztrip.jpg),
+    url(https://img.nzz.ch/2024/04/04/2dc47301-113f-4285-884c-0e5d2ab83e22.jpeg?width=1200&height=675&fit=bounds&quality=75&auto=webp&crop=1920,1080,x0,y0&wmark=nzz);
+  background-size: 2800px, 2750px, 3000px;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  /* Ich habe die Prozente angepasst, damit sie sich über die lange Seite verteilen */
+  background-position: center 0%, center 45%, center 95%;
+  min-height: 400vh; /* Macht die Seite extra lang für die Bilder */
   font-family: 'Montserrat', sans-serif;
-  text-align: center; /* Macht alles automatisch mittig! */
+  text-align: center; 
   margin: 0;
   padding: 0;
 }
@@ -17,7 +23,6 @@ h1 {
   color: white;
   text-decoration: underline;  
   margin-top: 50px;
-  /* Dein verschwommener Style, damit man es lesen kann: */
   backdrop-filter: blur(6px);
   background-color: rgba(0, 0, 0, 0.4);
   display: inline-block;
@@ -35,13 +40,14 @@ h4 {
   border: 5px solid white;
 }
 
-h5, h3 {
+h5 {
   font-size: 60px;
   color: black;
   background-color: white;
   display: inline-block;
   padding: 10px 30px;
   border: 10px solid black;
+  margin-top: 80px;
 }
 
 .divider {
@@ -56,19 +62,21 @@ a {
   font-weight: bold;
 }
 
-/* DEINE BILDER & TEXTE (Jetzt sicher im Flexbox-Layout) */
+/* DEINE BILDER & TEXTE */
 .bilder-container {
   display: flex;
   justify-content: center;
   gap: 50px;              
-  margin-top: 50px;
-  flex-wrap: wrap; /* Bricht um, wenn der Bildschirm zu klein ist */
+  margin-top: 20px;
+  flex-wrap: wrap; 
 }
 
 .bilder-container img {
   width: 400px;          
   border-radius: 10px;   
   border: 10px solid white;
+  display: block; /* Damit das Bild unter dem Text steht */
+  margin: 0 auto;
 }
 
 .bilder-container img:hover {  
@@ -84,7 +92,7 @@ a {
   background-color: white;
   display: inline-block;
   border: 10px solid black;
-  margin-top: 15px;
+  margin-bottom: 10px; /* Abstand zum Bild darunter */
   padding: 10px 20px;
 }
 
@@ -93,7 +101,7 @@ a {
   margin: 50px auto;
   max-width: 1200px;
   padding: 20px;
-  list-style-type: none; /* Macht die Punkte bei der Liste weg */
+  list-style-type: none; 
 }
 
 h2, .geschichte-teil-1, .geschichte-teil-2 {
@@ -117,10 +125,11 @@ h2, .geschichte-teil-1, .geschichte-teil-2 {
 /* DIE BUTTONS ZUM SEITENWECHSELN */
 .link-box {
   margin: 100px 0;
+  padding-bottom: 100px;
 }
 
 .seiten-link {
-  font-size: 50px;
+  font-size: 40px;
   background-color: white;
   color: black;
   text-decoration: none;
