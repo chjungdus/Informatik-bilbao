@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Idea Lab 💡</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="light-mode">
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="header__inner">
+      <div class="header__logo">
+        <span class="logo-icon">💡</span>
+        <h1 class="logo-text">Idea Lab</h1>
+      </div>
+      <button id="theme-toggle" class="btn btn--icon" aria-label="Modus wechseln" title="Modus wechseln">
+        <span id="theme-icon">🌙</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main class="main">
+
+    <!-- Formular: Neue Idee hinzufügen -->
+    <section class="section section--form" aria-labelledby="form-heading">
+      <h2 id="form-heading" class="section__title">Neue Idee hinzufügen</h2>
+      <form id="idea-form" class="idea-form" novalidate>
+
+        <div class="form-group">
+          <label for="idea-title">Titel *</label>
+          <input
+            type="text"
+            id="idea-title"
+            name="title"
+            placeholder="Kurzer, prägnanter Titel"
+            maxlength="80"
+            required
+          />
+          <span class="error-msg" id="title-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="idea-desc">Beschreibung *</label>
+          <textarea
+            id="idea-desc"
+            name="description"
+            placeholder="Beschreibe deine Idee kurz…"
+            maxlength="300"
+            rows="3"
+            required
+          ></textarea>
+          <span class="char-counter" id="desc-counter">0 / 300</span>
+          <span class="error-msg" id="desc-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="idea-category">Kategorie *</label>
+          <select id="idea-category" name="category" required>
+            <option value="">– Bitte wählen –</option>
+            <option value="Technologie">Technologie</option>
+            <option value="Design">Design</option>
+            <option value="Bildung">Bildung</option>
+            <option value="Gesellschaft">Gesellschaft</option>
+            <option value="Umwelt">Umwelt</option>
+            <option value="Sonstiges">Sonstiges</option>
+          </select>
+          <span class="error-msg" id="category-error"></span>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--full">
+          ➕ Idee einreichen
+        </button>
+      </form>
+    </section>
+
+    <!-- Steuerleiste: Filter + Sortierung -->
+    <section class="section section--controls" aria-label="Filter und Sortierung">
+      <div class="controls">
+
+        <div class="controls__group">
+          <label for="filter-category" class="controls__label">Kategorie:</label>
+          <select id="filter-category" class="controls__select">
+            <option value="all">Alle</option>
+            <option value="Technologie">Technologie</option>
+            <option value="Design">Design</option>
+            <option value="Bildung">Bildung</option>
+            <option value="Gesellschaft">Gesellschaft</option>
+            <option value="Umwelt">Umwelt</option>
+            <option value="Sonstiges">Sonstiges</option>
+          </select>
+        </div>
+
+        <div class="controls__group">
+          <label for="sort-order" class="controls__label">Sortieren nach:</label>
+          <select id="sort-order" class="controls__select">
+            <option value="newest">Neueste zuerst</option>
+            <option value="popular">Beliebteste zuerst</option>
+            <option value="oldest">Älteste zuerst</option>
+          </select>
+        </div>
+
+        <div class="controls__group controls__group--count">
+          <span id="idea-count" class="idea-count">0 Ideen</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Ideen-Liste -->
+    <section class="section section--ideas" aria-label="Ideen-Liste">
+      <div id="ideas-container" class="ideas-grid">
+        <!-- Karten werden per JavaScript eingefügt -->
+      </div>
+      <!-- Leerer Zustand -->
+      <div id="empty-state" class="empty-state" hidden>
+        <p class="empty-state__icon">🗒️</p>
+        <p class="empty-state__text">Noch keine Ideen vorhanden.<br>Sei der Erste!</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p>Idea Lab &copy; 2024 – Deine Ideen, deine Zukunft.</p>
+  </footer>
+
+  <!-- Toast-Benachrichtigung -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
