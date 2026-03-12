@@ -3,133 +3,113 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Idea Lab 💡</title>
+  <title>PixelRush – Jump &amp; Run</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="light-mode">
+<body>
 
-  <!-- ===== HEADER ===== -->
-  <header class="header">
-    <div class="header__inner">
-      <div class="header__logo">
-        <span class="logo-icon">💡</span>
-        <h1 class="logo-text">Idea Lab</h1>
+  <!-- ===== STARTMENÜ ===== -->
+  <div id="screen-menu" class="screen screen--active">
+    <div class="menu-box">
+      <h1 class="menu-title">
+        <span class="menu-title__pixel">PIXEL</span
+        ><span class="menu-title__rush">RUSH</span>
+      </h1>
+      <p class="menu-subtitle">Jump &amp; Run</p>
+      <div class="menu-highscore">
+        🏆 Highscore: <span id="menu-highscore-val">0</span>
       </div>
-      <button id="theme-toggle" class="btn btn--icon" aria-label="Modus wechseln" title="Modus wechseln">
-        <span id="theme-icon">🌙</span>
-      </button>
+      <button id="btn-start" class="menu-btn menu-btn--primary">▶ Spielen</button>
+      <button id="btn-how"   class="menu-btn">❓ Steuerung</button>
     </div>
-  </header>
+    <!-- Animierte Hintergrund-Sterne -->
+    <canvas id="star-canvas"></canvas>
+  </div>
 
-  <!-- ===== MAIN ===== -->
-  <main class="main">
+  <!-- ===== STEUERUNGS-OVERLAY ===== -->
+  <div id="screen-how" class="screen overlay-screen" hidden>
+    <div class="overlay-box">
+      <h2>Steuerung</h2>
+      <ul class="how-list">
+        <li><kbd>←</kbd> <kbd>→</kbd> &nbsp; Bewegen</li>
+        <li><kbd>↑</kbd> / <kbd>W</kbd> / <kbd>Space</kbd> &nbsp; Springen</li>
+        <li><kbd>P</kbd> &nbsp; Pause</li>
+        <li><kbd>R</kbd> &nbsp; Neustart (nach Game Over)</li>
+      </ul>
+      <p class="how-tips">
+        💰 Sammle Münzen &nbsp;|&nbsp;
+        ❤️ 3 Leben &nbsp;|&nbsp;
+        ⭐ Besondere Power-Ups
+      </p>
+      <button id="btn-how-close" class="menu-btn menu-btn--primary">Zurück</button>
+    </div>
+  </div>
 
-    <!-- Formular: Neue Idee hinzufügen -->
-    <section class="section section--form" aria-labelledby="form-heading">
-      <h2 id="form-heading" class="section__title">Neue Idee hinzufügen</h2>
-      <form id="idea-form" class="idea-form" novalidate>
+  <!-- ===== SPIEL-HUD ===== -->
+  <div id="hud" class="hud" hidden>
+    <div class="hud__left">
+      <span id="hud-lives"  class="hud__item">❤️ <span id="hud-lives-val">3</span></span>
+      <span id="hud-level"  class="hud__item">🗺 Level <span id="hud-level-val">1</span></span>
+    </div>
+    <div class="hud__center">
+      <span id="hud-score"  class="hud__item">⭐ <span id="hud-score-val">0</span></span>
+    </div>
+    <div class="hud__right">
+      <span id="hud-coins"  class="hud__item">🪙 <span id="hud-coins-val">0</span></span>
+      <button id="btn-pause" class="hud__btn">⏸</button>
+    </div>
+  </div>
 
-        <div class="form-group">
-          <label for="idea-title">Titel *</label>
-          <input
-            type="text"
-            id="idea-title"
-            name="title"
-            placeholder="Kurzer, prägnanter Titel"
-            maxlength="80"
-            required
-          />
-          <span class="error-msg" id="title-error"></span>
-        </div>
+  <!-- ===== GAME CANVAS ===== -->
+  <canvas id="game-canvas" hidden></canvas>
 
-        <div class="form-group">
-          <label for="idea-desc">Beschreibung *</label>
-          <textarea
-            id="idea-desc"
-            name="description"
-            placeholder="Beschreibe deine Idee kurz…"
-            maxlength="300"
-            rows="3"
-            required
-          ></textarea>
-          <span class="char-counter" id="desc-counter">0 / 300</span>
-          <span class="error-msg" id="desc-error"></span>
-        </div>
+  <!-- ===== PAUSE-OVERLAY ===== -->
+  <div id="screen-pause" class="screen overlay-screen" hidden>
+    <div class="overlay-box">
+      <h2>Pause</h2>
+      <button id="btn-resume"  class="menu-btn menu-btn--primary">▶ Weiter</button>
+      <button id="btn-restart" class="menu-btn">↺ Neustart</button>
+      <button id="btn-to-menu" class="menu-btn">🏠 Menü</button>
+    </div>
+  </div>
 
-        <div class="form-group">
-          <label for="idea-category">Kategorie *</label>
-          <select id="idea-category" name="category" required>
-            <option value="">– Bitte wählen –</option>
-            <option value="Technologie">Technologie</option>
-            <option value="Design">Design</option>
-            <option value="Bildung">Bildung</option>
-            <option value="Gesellschaft">Gesellschaft</option>
-            <option value="Umwelt">Umwelt</option>
-            <option value="Sonstiges">Sonstiges</option>
-          </select>
-          <span class="error-msg" id="category-error"></span>
-        </div>
+  <!-- ===== LEVEL-CLEAR-OVERLAY ===== -->
+  <div id="screen-levelclear" class="screen overlay-screen" hidden>
+    <div class="overlay-box">
+      <h2>🎉 Level geschafft!</h2>
+      <p id="lc-score-line" class="overlay-info"></p>
+      <p id="lc-coins-line" class="overlay-info"></p>
+      <button id="btn-next-level" class="menu-btn menu-btn--primary">Weiter ▶</button>
+    </div>
+  </div>
 
-        <button type="submit" class="btn btn--primary btn--full">
-          ➕ Idee einreichen
-        </button>
-      </form>
-    </section>
+  <!-- ===== GAME-OVER-OVERLAY ===== -->
+  <div id="screen-gameover" class="screen overlay-screen" hidden>
+    <div class="overlay-box overlay-box--danger">
+      <h2>💀 Game Over</h2>
+      <p id="go-score-line"  class="overlay-info"></p>
+      <p id="go-high-line"   class="overlay-info"></p>
+      <button id="btn-go-restart" class="menu-btn menu-btn--primary">↺ Nochmal</button>
+      <button id="btn-go-menu"    class="menu-btn">🏠 Menü</button>
+    </div>
+  </div>
 
-    <!-- Steuerleiste: Filter + Sortierung -->
-    <section class="section section--controls" aria-label="Filter und Sortierung">
-      <div class="controls">
+  <!-- ===== WIN-OVERLAY ===== -->
+  <div id="screen-win" class="screen overlay-screen" hidden>
+    <div class="overlay-box overlay-box--gold">
+      <h2>🏆 Du hast gewonnen!</h2>
+      <p id="win-score-line" class="overlay-info"></p>
+      <p id="win-high-line"  class="overlay-info"></p>
+      <button id="btn-win-menu" class="menu-btn menu-btn--primary">🏠 Menü</button>
+    </div>
+  </div>
 
-        <div class="controls__group">
-          <label for="filter-category" class="controls__label">Kategorie:</label>
-          <select id="filter-category" class="controls__select">
-            <option value="all">Alle</option>
-            <option value="Technologie">Technologie</option>
-            <option value="Design">Design</option>
-            <option value="Bildung">Bildung</option>
-            <option value="Gesellschaft">Gesellschaft</option>
-            <option value="Umwelt">Umwelt</option>
-            <option value="Sonstiges">Sonstiges</option>
-          </select>
-        </div>
-
-        <div class="controls__group">
-          <label for="sort-order" class="controls__label">Sortieren nach:</label>
-          <select id="sort-order" class="controls__select">
-            <option value="newest">Neueste zuerst</option>
-            <option value="popular">Beliebteste zuerst</option>
-            <option value="oldest">Älteste zuerst</option>
-          </select>
-        </div>
-
-        <div class="controls__group controls__group--count">
-          <span id="idea-count" class="idea-count">0 Ideen</span>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Ideen-Liste -->
-    <section class="section section--ideas" aria-label="Ideen-Liste">
-      <div id="ideas-container" class="ideas-grid">
-        <!-- Karten werden per JavaScript eingefügt -->
-      </div>
-      <!-- Leerer Zustand -->
-      <div id="empty-state" class="empty-state" hidden>
-        <p class="empty-state__icon">🗒️</p>
-        <p class="empty-state__text">Noch keine Ideen vorhanden.<br>Sei der Erste!</p>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <p>Idea Lab &copy; 2024 – Deine Ideen, deine Zukunft.</p>
-  </footer>
-
-  <!-- Toast-Benachrichtigung -->
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <!-- Mobile Touch-Controls -->
+  <div id="touch-controls" class="touch-controls" hidden>
+    <button id="tc-left"  class="tc-btn">◀</button>
+    <button id="tc-jump"  class="tc-btn tc-btn--jump">▲</button>
+    <button id="tc-right" class="tc-btn">▶</button>
+  </div>
 
   <script src="app.js"></script>
 </body>
