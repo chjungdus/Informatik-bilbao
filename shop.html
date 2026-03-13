@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kaidun Boxhandschuhe – Shop</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="shop.css" />
+
+  <!--
+    =====================================================
+    EMAILJS EINRICHTEN – NUR 3 SCHRITTE:
+    =====================================================
+    1. Gehe auf https://www.emailjs.com und erstelle ein
+       KOSTENLOSES Konto (bis zu 200 Emails/Monat gratis)
+
+    2. Füge einen Email-Service hinzu:
+       Dashboard → Email Services → Add New Service → Gmail
+       Verbinde dein Konto mateo.sdlm@gmail.com
+       Notiere die SERVICE_ID (z.B. "service_abc123")
+
+    3. Erstelle ein Email-Template:
+       Dashboard → Email Templates → Create New Template
+       Füge diese Variablen ein:
+         {{bestellnummer}} {{name}} {{email}} {{telefon}}
+         {{adresse}} {{anzahl}} {{gesamtpreis}} {{datum}} {{notiz}}
+       Notiere die TEMPLATE_ID (z.B. "template_xyz789")
+
+    4. Kopiere deinen Public Key:
+       Dashboard → Account → General → Public Key
+
+    5. Setze SERVICE_ID, TEMPLATE_ID und PUBLIC_KEY
+       unten im <script> Bereich ein.
+    =====================================================
+  -->
+
+  <!-- EmailJS laden -->
+  <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
+</head>
+<body class="light-mode">
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="header__inner">
+      <div class="header__logo">
+        <a href="index.html" class="logo-link">
+          <span class="logo-icon">💡</span>
+          <h1 class="logo-text">Idea Lab</h1>
+        </a>
+      </div>
+      <nav class="header__nav">
+        <a href="index.html" class="nav-link">Ideen</a>
+        <a href="shop.html" class="nav-link nav-link--active">Shop</a>
+      </nav>
+      <button id="theme-toggle" class="btn btn--icon" aria-label="Modus wechseln" title="Modus wechseln">
+        <span id="theme-icon">🌙</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main class="shop-main">
+
+    <!-- ===== PRODUKT-SECTION ===== -->
+    <section class="product-section">
+      <div class="product-card">
+
+        <!-- Produkt-Bild -->
+        <div class="product-image">
+          <div class="product-image__placeholder">
+            🥊
+          </div>
+        </div>
+
+        <!-- Produkt-Info -->
+        <div class="product-info">
+          <span class="product-badge">Neu</span>
+          <h2 class="product-title">Kaidun Boxhandschuhe</h2>
+          <p class="product-desc">
+            Hochwertige Boxhandschuhe für Training und Wettkampf.
+            Perfekte Passform, maximaler Schutz und langlebiges Material.
+          </p>
+          <div class="product-price">
+            <span class="price-amount">100,00 €</span>
+            <span class="price-tax">inkl. MwSt.</span>
+          </div>
+          <a href="#bestellformular" class="btn btn--primary btn--order">
+            🛒 Jetzt bestellen
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== BESTELLFORMULAR ===== -->
+    <section class="section section--form" id="bestellformular">
+      <h2 class="section__title">Bestellung aufgeben</h2>
+
+      <!-- Erfolgs-Meldung (versteckt bis Formular abgesendet) -->
+      <div id="success-box" class="success-box" hidden>
+        <div class="success-box__icon">✅</div>
+        <h3>Bestellung eingegangen!</h3>
+        <p>Vielen Dank für deine Bestellung. Eine Bestätigung wurde an deine Email gesendet.</p>
+        <div class="iban-reminder">
+          <p><strong>Bitte überweise den Betrag innerhalb von 5 Werktagen:</strong></p>
+          <p class="iban-value">IBAN: DE39 1203 0000 1209 9915 93</p>
+          <p id="verwendungszweck-confirm" class="iban-usage"></p>
+        </div>
+        <button class="btn btn--primary" onclick="neueBestellung()">Neue Bestellung</button>
+      </div>
+
+      <!-- Das Formular -->
+      <form id="order-form" class="idea-form" novalidate>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="order-name">Name *</label>
+            <input type="text" id="order-name" placeholder="Vor- und Nachname" required />
+            <span class="error-msg" id="name-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="order-email">Email *</label>
+            <input type="email" id="order-email" placeholder="deine@email.de" required />
+            <span class="error-msg" id="email-error"></span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="order-phone">Telefonnummer</label>
+            <input type="tel" id="order-phone" placeholder="+49 123 456789" />
+          </div>
+
+          <div class="form-group">
+            <label for="order-qty">Anzahl *</label>
+            <input type="number" id="order-qty" value="1" min="1" max="99" required />
+            <span class="error-msg" id="qty-error"></span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="order-address">Lieferadresse *</label>
+          <textarea id="order-address" rows="2" placeholder="Straße, Hausnummer, PLZ, Stadt" required></textarea>
+          <span class="error-msg" id="address-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="order-note">Anmerkungen (optional)</label>
+          <textarea id="order-note" rows="2" placeholder="z.B. Größe, Farbe, besondere Wünsche…"></textarea>
+        </div>
+
+        <!-- Gesamtpreis-Anzeige -->
+        <div class="price-summary">
+          <span>Gesamtpreis:</span>
+          <span id="total-price" class="price-total">100,00 €</span>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--full" id="submit-btn">
+          ✉️ Bestellung absenden
+        </button>
+
+      </form>
+    </section>
+
+    <!-- ===== ZAHLUNGSINFORMATIONEN ===== -->
+    <section class="section iban-section">
+      <h2 class="section__title">Zahlungsinformationen</h2>
+      <p class="iban-intro">Bitte überweise den Bestellbetrag nach Eingang der Bestätigung:</p>
+
+      <div class="iban-box">
+        <div class="iban-row">
+          <span class="iban-label">Bank</span>
+          <span class="iban-data">Deutsche Bank</span>
+        </div>
+        <div class="iban-row">
+          <span class="iban-label">IBAN</span>
+          <span class="iban-data iban-number">DE39 1203 0000 1209 9915 93</span>
+        </div>
+        <div class="iban-row">
+          <span class="iban-label">Kontoinhaber</span>
+          <span class="iban-data">Kaidun</span>
+        </div>
+        <div class="iban-row">
+          <span class="iban-label">Verwendungszweck</span>
+          <span class="iban-data">Bestellnummer (wird nach Bestellung angezeigt)</span>
+        </div>
+        <div class="iban-row">
+          <span class="iban-label">Zahlungsfrist</span>
+          <span class="iban-data">5 Werktage nach Bestellung</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p>Kaidun Shop &copy; 2024 – Hochwertige Boxausrüstung.</p>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // =====================================================
+    // EMAILJS KONFIGURATION – HIER DEINE WERTE EINSETZEN
+    // =====================================================
+    const EMAILJS_SERVICE_ID  = 'DEINE_SERVICE_ID';   // z.B. 'service_abc123'
+    const EMAILJS_TEMPLATE_ID = 'DEINE_TEMPLATE_ID';  // z.B. 'template_xyz789'
+    const EMAILJS_PUBLIC_KEY  = 'DEIN_PUBLIC_KEY';    // z.B. 'user_AbCdEfGh'
+    // =====================================================
+
+    // EmailJS initialisieren
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+
+    // Dark Mode (wie in der Haupt-App)
+    const body = document.body;
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+
+    function applyTheme(dark) {
+      if (dark) {
+        body.classList.replace('light-mode', 'dark-mode') || body.classList.add('dark-mode');
+        themeIcon.textContent = '☀️';
+      } else {
+        body.classList.replace('dark-mode', 'light-mode') || body.classList.add('light-mode');
+        themeIcon.textContent = '🌙';
+      }
+    }
+
+    const savedTheme = localStorage.getItem('ideaLab_theme');
+    if (savedTheme) {
+      applyTheme(savedTheme === 'dark');
+    } else {
+      applyTheme(window.matchMedia('(prefers-color-scheme: dark)').matches);
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const isDark = body.classList.contains('dark-mode');
+      applyTheme(!isDark);
+      localStorage.setItem('ideaLab_theme', isDark ? 'light' : 'dark');
+    });
+
+    // Preis berechnen
+    const qtyInput = document.getElementById('order-qty');
+    const totalDisplay = document.getElementById('total-price');
+    const PRICE = 100;
+
+    qtyInput.addEventListener('input', () => {
+      const qty = Math.max(1, parseInt(qtyInput.value) || 1);
+      qtyInput.value = qty;
+      totalDisplay.textContent = (qty * PRICE).toFixed(2).replace('.', ',') + ' €';
+    });
+
+    // Bestellnummer generieren
+    function genOrderId() {
+      return 'KAI-' + Date.now().toString(36).toUpperCase();
+    }
+
+    // Toast anzeigen
+    function showToast(msg, duration = 3500) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), duration);
+    }
+
+    // Formular-Validierung
+    function validate() {
+      let ok = true;
+
+      const name = document.getElementById('order-name');
+      const email = document.getElementById('order-email');
+      const address = document.getElementById('order-address');
+      const qty = document.getElementById('order-qty');
+
+      document.querySelectorAll('.error-msg').forEach(e => e.textContent = '');
+      document.querySelectorAll('.invalid').forEach(e => e.classList.remove('invalid'));
+
+      if (!name.value.trim()) {
+        document.getElementById('name-error').textContent = 'Bitte Namen eingeben.';
+        name.classList.add('invalid');
+        ok = false;
+      }
+
+      if (!email.value.trim() || !email.value.includes('@')) {
+        document.getElementById('email-error').textContent = 'Bitte gültige Email eingeben.';
+        email.classList.add('invalid');
+        ok = false;
+      }
+
+      if (!address.value.trim()) {
+        document.getElementById('address-error').textContent = 'Bitte Lieferadresse eingeben.';
+        address.classList.add('invalid');
+        ok = false;
+      }
+
+      const qtyVal = parseInt(qty.value);
+      if (!qtyVal || qtyVal < 1) {
+        document.getElementById('qty-error').textContent = 'Anzahl muss mindestens 1 sein.';
+        qty.classList.add('invalid');
+        ok = false;
+      }
+
+      return ok;
+    }
+
+    // Formular absenden
+    document.getElementById('order-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!validate()) return;
+
+      const btn = document.getElementById('submit-btn');
+      btn.textContent = '⏳ Wird gesendet…';
+      btn.disabled = true;
+
+      const bestellnummer = genOrderId();
+      const anzahl = parseInt(document.getElementById('order-qty').value);
+      const gesamtpreis = (anzahl * PRICE).toFixed(2).replace('.', ',') + ' €';
+
+      const templateParams = {
+        bestellnummer: bestellnummer,
+        name:          document.getElementById('order-name').value.trim(),
+        email:         document.getElementById('order-email').value.trim(),
+        telefon:       document.getElementById('order-phone').value.trim() || '–',
+        adresse:       document.getElementById('order-address').value.trim(),
+        anzahl:        anzahl,
+        gesamtpreis:   gesamtpreis,
+        datum:         new Date().toLocaleDateString('de-DE', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' }),
+        notiz:         document.getElementById('order-note').value.trim() || '–',
+        to_email:      'mateo.sdlm@gmail.com'
+      };
+
+      try {
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+
+        // Erfolg anzeigen
+        document.getElementById('order-form').hidden = true;
+        document.getElementById('verwendungszweck-confirm').textContent =
+          'Verwendungszweck: ' + bestellnummer;
+        document.getElementById('success-box').hidden = false;
+        window.scrollTo({ top: document.getElementById('bestellformular').offsetTop - 80, behavior: 'smooth' });
+
+      } catch (err) {
+        console.error('EmailJS Fehler:', err);
+        showToast('Fehler beim Senden. Bitte EmailJS-Konfiguration prüfen.');
+        btn.textContent = '✉️ Bestellung absenden';
+        btn.disabled = false;
+      }
+    });
+
+    // Neue Bestellung starten
+    function neueBestellung() {
+      document.getElementById('order-form').reset();
+      document.getElementById('order-form').hidden = false;
+      document.getElementById('success-box').hidden = true;
+      totalDisplay.textContent = '100,00 €';
+      document.querySelectorAll('.error-msg').forEach(e => e.textContent = '');
+    }
+  </script>
+
+</body>
+</html>

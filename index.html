@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Idea Lab 💡</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="shop.css" />
 </head>
 <body class="light-mode">
 
@@ -12,9 +13,15 @@
   <header class="header">
     <div class="header__inner">
       <div class="header__logo">
-        <span class="logo-icon">💡</span>
-        <h1 class="logo-text">Idea Lab</h1>
+        <a href="index.html" class="logo-link">
+          <span class="logo-icon">💡</span>
+          <h1 class="logo-text">Idea Lab</h1>
+        </a>
       </div>
+      <nav class="header__nav">
+        <a href="index.html" class="nav-link nav-link--active">Ideen</a>
+        <a href="shop.html" class="nav-link">🛒 Shop</a>
+      </nav>
       <button id="theme-toggle" class="btn btn--icon" aria-label="Modus wechseln" title="Modus wechseln">
         <span id="theme-icon">🌙</span>
       </button>

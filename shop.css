@@ -1,0 +1,329 @@
+/* =============================================
+   SHOP – Stylesheet für shop.html
+   ============================================= */
+
+/* Navigation Links im Header */
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  text-decoration: none;
+}
+
+.logo-link:hover .logo-text {
+  color: var(--clr-primary-h);
+}
+
+.header__nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.nav-link {
+  font-weight: 600;
+  font-size: var(--fz-sm);
+  color: var(--clr-text-muted);
+  padding: .4rem .8rem;
+  border-radius: 8px;
+  transition: background var(--transition), color var(--transition);
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  background: var(--clr-surface-alt);
+  color: var(--clr-text);
+}
+
+.nav-link--active {
+  background: var(--clr-badge-bg);
+  color: var(--clr-primary);
+}
+
+/* =============================================
+   SHOP MAIN LAYOUT
+   ============================================= */
+.shop-main {
+  flex: 1;
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem var(--gap);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* =============================================
+   PRODUKT-SECTION
+   ============================================= */
+.product-section {
+  background: var(--clr-surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--clr-border);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.product-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 340px;
+}
+
+/* Produkt-Bild */
+.product-image {
+  background: var(--clr-surface-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid var(--clr-border);
+}
+
+.product-image__placeholder {
+  font-size: 8rem;
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,.15));
+  transition: transform .3s ease;
+}
+
+.product-image:hover .product-image__placeholder {
+  transform: scale(1.05) rotate(-5deg);
+}
+
+/* Produkt-Info */
+.product-info {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.product-badge {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  padding: .2rem .65rem;
+  border-radius: 99px;
+  background: var(--clr-badge-bg);
+  color: var(--clr-badge-text);
+  width: fit-content;
+}
+
+.product-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--clr-text);
+  letter-spacing: -.5px;
+}
+
+.product-desc {
+  font-size: var(--fz-sm);
+  color: var(--clr-text-muted);
+  line-height: 1.6;
+}
+
+.product-price {
+  display: flex;
+  align-items: baseline;
+  gap: .5rem;
+}
+
+.price-amount {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--clr-primary);
+}
+
+.price-tax {
+  font-size: var(--fz-sm);
+  color: var(--clr-text-muted);
+}
+
+.btn--order {
+  width: fit-content;
+  padding: .75rem 1.5rem;
+  font-size: var(--fz-md);
+  margin-top: .25rem;
+}
+
+/* =============================================
+   BESTELLFORMULAR
+   ============================================= */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Gesamtpreis-Box */
+.price-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--clr-surface-alt);
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius);
+  padding: .85rem 1.25rem;
+  font-weight: 600;
+}
+
+.price-total {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--clr-primary);
+}
+
+/* Erfolgs-Box */
+.success-box {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.success-box__icon {
+  font-size: 3.5rem;
+}
+
+.success-box h3 {
+  font-size: var(--fz-xl);
+  font-weight: 700;
+}
+
+.success-box p {
+  color: var(--clr-text-muted);
+  max-width: 400px;
+}
+
+.iban-reminder {
+  background: var(--clr-surface-alt);
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius);
+  padding: 1rem 1.5rem;
+  text-align: left;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+
+.iban-value {
+  font-weight: 700;
+  font-size: var(--fz-lg);
+  color: var(--clr-primary);
+  letter-spacing: .05em;
+}
+
+.iban-usage {
+  font-size: var(--fz-sm);
+  color: var(--clr-text-muted);
+}
+
+/* =============================================
+   IBAN SECTION
+   ============================================= */
+.iban-section {
+  background: var(--clr-surface);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--clr-border);
+}
+
+.iban-intro {
+  color: var(--clr-text-muted);
+  margin-bottom: 1.25rem;
+  font-size: var(--fz-sm);
+}
+
+.iban-box {
+  background: var(--clr-surface-alt);
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.iban-row {
+  display: flex;
+  align-items: center;
+  padding: .85rem 1.25rem;
+  gap: 1rem;
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.iban-row:last-child {
+  border-bottom: none;
+}
+
+.iban-label {
+  font-size: var(--fz-sm);
+  font-weight: 700;
+  color: var(--clr-text-muted);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  min-width: 140px;
+}
+
+.iban-data {
+  color: var(--clr-text);
+  font-weight: 500;
+}
+
+.iban-number {
+  font-size: var(--fz-lg);
+  font-weight: 700;
+  color: var(--clr-primary);
+  letter-spacing: .08em;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 650px) {
+  .product-card {
+    grid-template-columns: 1fr;
+  }
+
+  .product-image {
+    border-right: none;
+    border-bottom: 1px solid var(--clr-border);
+    padding: 2rem;
+    min-height: 180px;
+  }
+
+  .product-image__placeholder {
+    font-size: 5rem;
+  }
+
+  .product-info {
+    padding: 1.5rem;
+  }
+
+  .product-title {
+    font-size: 1.4rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .iban-label {
+    min-width: 100px;
+  }
+
+  .iban-number {
+    font-size: var(--fz-md);
+    letter-spacing: .04em;
+  }
+
+  .shop-main {
+    padding: 1.25rem .9rem;
+  }
+}
