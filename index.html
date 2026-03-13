@@ -3,134 +3,111 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Idea Lab 💡</title>
+  <title>CYBER NEXUS</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="light-mode">
+<body>
 
-  <!-- ===== HEADER ===== -->
-  <header class="header">
-    <div class="header__inner">
-      <div class="header__logo">
-        <span class="logo-icon">💡</span>
-        <h1 class="logo-text">Idea Lab</h1>
-      </div>
-      <button id="theme-toggle" class="btn btn--icon" aria-label="Modus wechseln" title="Modus wechseln">
-        <span id="theme-icon">🌙</span>
-      </button>
-    </div>
-  </header>
+  <!-- Three.js Canvas Background -->
+  <canvas id="bg-canvas"></canvas>
 
-  <!-- ===== MAIN ===== -->
-  <main class="main">
+  <!-- Mouse Particle Trail -->
+  <canvas id="trail-canvas"></canvas>
 
-    <!-- Formular: Neue Idee hinzufügen -->
-    <section class="section section--form" aria-labelledby="form-heading">
-      <h2 id="form-heading" class="section__title">Neue Idee hinzufügen</h2>
-      <form id="idea-form" class="idea-form" novalidate>
+  <!-- Main Content -->
+  <div class="overlay">
 
-        <div class="form-group">
-          <label for="idea-title">Titel *</label>
-          <input
-            type="text"
-            id="idea-title"
-            name="title"
-            placeholder="Kurzer, prägnanter Titel"
-            maxlength="80"
-            required
-          />
-          <span class="error-msg" id="title-error"></span>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-content">
+        <div class="glitch-wrapper">
+          <h1 class="title glitch" data-text="CYBER NEXUS">CYBER NEXUS</h1>
         </div>
-
-        <div class="form-group">
-          <label for="idea-desc">Beschreibung *</label>
-          <textarea
-            id="idea-desc"
-            name="description"
-            placeholder="Beschreibe deine Idee kurz…"
-            maxlength="300"
-            rows="3"
-            required
-          ></textarea>
-          <span class="char-counter" id="desc-counter">0 / 300</span>
-          <span class="error-msg" id="desc-error"></span>
+        <p class="subtitle">NEXT GENERATION &nbsp;|&nbsp; DIGITAL REALITY &nbsp;|&nbsp; 2026</p>
+        <div class="cta-row">
+          <button class="btn-neon" id="btn-explore">EXPLORE</button>
+          <button class="btn-ghost" id="btn-connect">CONNECT</button>
         </div>
-
-        <div class="form-group">
-          <label for="idea-category">Kategorie *</label>
-          <select id="idea-category" name="category" required>
-            <option value="">– Bitte wählen –</option>
-            <option value="Technologie">Technologie</option>
-            <option value="Design">Design</option>
-            <option value="Bildung">Bildung</option>
-            <option value="Gesellschaft">Gesellschaft</option>
-            <option value="Umwelt">Umwelt</option>
-            <option value="Sonstiges">Sonstiges</option>
-          </select>
-          <span class="error-msg" id="category-error"></span>
+        <div class="scroll-hint">
+          <span>SCROLL</span>
+          <div class="scroll-line"></div>
         </div>
-
-        <button type="submit" class="btn btn--primary btn--full">
-          ➕ Idee einreichen
-        </button>
-      </form>
-    </section>
-
-    <!-- Steuerleiste: Filter + Sortierung -->
-    <section class="section section--controls" aria-label="Filter und Sortierung">
-      <div class="controls">
-
-        <div class="controls__group">
-          <label for="filter-category" class="controls__label">Kategorie:</label>
-          <select id="filter-category" class="controls__select">
-            <option value="all">Alle</option>
-            <option value="Technologie">Technologie</option>
-            <option value="Design">Design</option>
-            <option value="Bildung">Bildung</option>
-            <option value="Gesellschaft">Gesellschaft</option>
-            <option value="Umwelt">Umwelt</option>
-            <option value="Sonstiges">Sonstiges</option>
-          </select>
-        </div>
-
-        <div class="controls__group">
-          <label for="sort-order" class="controls__label">Sortieren nach:</label>
-          <select id="sort-order" class="controls__select">
-            <option value="newest">Neueste zuerst</option>
-            <option value="popular">Beliebteste zuerst</option>
-            <option value="oldest">Älteste zuerst</option>
-          </select>
-        </div>
-
-        <div class="controls__group controls__group--count">
-          <span id="idea-count" class="idea-count">0 Ideen</span>
-        </div>
-
       </div>
     </section>
 
-    <!-- Ideen-Liste -->
-    <section class="section section--ideas" aria-label="Ideen-Liste">
-      <div id="ideas-container" class="ideas-grid">
-        <!-- Karten werden per JavaScript eingefügt -->
-      </div>
-      <!-- Leerer Zustand -->
-      <div id="empty-state" class="empty-state" hidden>
-        <p class="empty-state__icon">🗒️</p>
-        <p class="empty-state__text">Noch keine Ideen vorhanden.<br>Sei der Erste!</p>
+    <!-- Stats Section -->
+    <section class="stats-section" id="stats">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">◈</div>
+          <div class="stat-number" data-target="98">0</div>
+          <div class="stat-label">PERFORMANCE</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">⬡</div>
+          <div class="stat-number" data-target="3000">0</div>
+          <div class="stat-label">PARTICLES</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">◉</div>
+          <div class="stat-number" data-target="60">0</div>
+          <div class="stat-label">FPS</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">◆</div>
+          <div class="stat-number" data-target="360">0</div>
+          <div class="stat-label">DIMENSIONS</div>
+        </div>
       </div>
     </section>
 
-  </main>
+    <!-- Cards Section -->
+    <section class="cards-section" id="cards">
+      <h2 class="section-title">CORE MODULES</h2>
+      <div class="cards-grid">
+        <div class="card-3d" id="card1">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-glyph">⬡</div>
+              <h3>NEURAL LINK</h3>
+              <p>Advanced AI-powered connections bridging digital and physical reality.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card-3d" id="card2">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-glyph">◈</div>
+              <h3>QUANTUM CORE</h3>
+              <p>Ultra-fast processing with quantum-entangled data streams.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card-3d" id="card3">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-glyph">◉</div>
+              <h3>VOID MATRIX</h3>
+              <p>Infinite dimensional space for limitless computational power.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <p>Idea Lab &copy; 2024 – Deine Ideen, deine Zukunft.</p>
-  </footer>
+    <!-- Footer Bar -->
+    <footer class="footer-bar">
+      <span class="footer-left">CYBER NEXUS &copy; 2026</span>
+      <span class="footer-mid">&#9658; SYSTEM ONLINE &#9658;</span>
+      <span class="footer-right">ALL SYSTEMS NOMINAL</span>
+    </footer>
 
-  <!-- Toast-Benachrichtigung -->
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </div>
 
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
