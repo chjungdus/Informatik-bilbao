@@ -1,0 +1,72 @@
+{
+  "_comment": "Planet Destroyer — Runtime configuration. All values can be tweaked to tune gameplay balance.",
+
+  "planet": {
+    "radius": 10.0,
+    "rotation_speed": 0.015,
+    "initial_health": 100.0,
+    "initial_atmosphere": 100.0,
+    "initial_temperature": 15.0,
+    "initial_tectonic_activity": 20.0,
+    "initial_biosphere": 75.0,
+    "region_count": 120,
+    "noise_scale": 1.8
+  },
+
+  "civilization": {
+    "initial_city_count": 8,
+    "max_cities": 60,
+    "base_pop_growth_rate": 0.018,
+    "base_tech_growth_rate": 0.0008,
+    "expansion_check_interval": 20.0,
+    "satellite_tech_threshold": 20.0,
+    "shield_tech_threshold": 35.0,
+    "defense_gun_tech_threshold": 50.0,
+    "rebuild_time_seconds": 35.0
+  },
+
+  "player": {
+    "initial_energy": 100.0,
+    "max_energy": 100.0,
+    "energy_regen_per_second": 4.0
+  },
+
+  "abilities": {
+    "METEOR_STRIKE":      { "energy_cost": 20.0, "cooldown": 5.0  },
+    "VOLCANIC_ERUPTION":  { "energy_cost": 30.0, "cooldown": 8.0  },
+    "EARTHQUAKE":         { "energy_cost": 25.0, "cooldown": 6.0  },
+    "CLIMATE_SHIFT":      { "energy_cost": 35.0, "cooldown": 12.0 },
+    "ICE_AGE":            { "energy_cost": 60.0, "cooldown": 25.0 },
+    "SOLAR_FLARE":        { "energy_cost": 45.0, "cooldown": 15.0 },
+    "BLACK_HOLE":         { "energy_cost": 80.0, "cooldown": 30.0 },
+    "PLANET_CRACK":       { "energy_cost": 200.0, "cooldown": 120.0 }
+  },
+
+  "camera": {
+    "default_orbit_distance": 28.0,
+    "min_distance": 14.0,
+    "max_distance": 55.0,
+    "rotation_speed": 0.4,
+    "zoom_speed": 3.0,
+    "smooth_factor": 8.0,
+    "fov": 55.0
+  },
+
+  "visuals": {
+    "planet_radial_segments": 64,
+    "planet_rings": 32,
+    "atmosphere_scale": 1.06,
+    "star_count": 12,
+    "glow_enabled": true,
+    "msaa": 2
+  },
+
+  "gameplay_speeds": [0.5, 1.0, 2.0, 4.0],
+  "default_speed": 1.0,
+
+  "debug": {
+    "show_region_ids": false,
+    "log_disaster_hits": true,
+    "show_fps": false
+  }
+}

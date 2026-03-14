@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Space background -->
+  <circle cx="64" cy="64" r="64" fill="#050510"/>
+
+  <!-- Stars -->
+  <circle cx="15" cy="20" r="1" fill="white" opacity="0.8"/>
+  <circle cx="110" cy="15" r="1.5" fill="white" opacity="0.9"/>
+  <circle cx="95" cy="100" r="1" fill="white" opacity="0.7"/>
+  <circle cx="20" cy="95" r="1.2" fill="white" opacity="0.8"/>
+  <circle cx="115" cy="60" r="1" fill="white" opacity="0.6"/>
+  <circle cx="8"  cy="50" r="1.5" fill="white" opacity="0.9"/>
+
+  <!-- Atmosphere glow -->
+  <circle cx="64" cy="64" r="42" fill="none" stroke="#3399ff" stroke-width="6" opacity="0.3"/>
+  <circle cx="64" cy="64" r="38" fill="none" stroke="#5599ff" stroke-width="3" opacity="0.4"/>
+
+  <!-- Planet body -->
+  <radialGradient id="planet_grad" cx="40%" cy="35%" r="65%">
+    <stop offset="0%"   stop-color="#2a8a2a"/>
+    <stop offset="35%"  stop-color="#1a5e1a"/>
+    <stop offset="65%"  stop-color="#145014"/>
+    <stop offset="100%" stop-color="#0a0a30"/>
+  </radialGradient>
+  <circle cx="64" cy="64" r="36" fill="url(#planet_grad)"/>
+
+  <!-- Ocean areas -->
+  <ellipse cx="52" cy="60" rx="14" ry="10" fill="#1a44aa" opacity="0.7"/>
+  <ellipse cx="76" cy="70" rx="10" ry="7"  fill="#1a44aa" opacity="0.6"/>
+
+  <!-- Mountain ridge -->
+  <path d="M50 55 L58 44 L66 55 L72 48 L80 55" stroke="#8a7a6a" stroke-width="2" fill="none" opacity="0.8"/>
+
+  <!-- Ice cap (north pole) -->
+  <ellipse cx="64" cy="32" rx="14" ry="6" fill="#d0eeff" opacity="0.75"/>
+
+  <!-- Crack / disaster line -->
+  <path d="M44 65 L52 72 L58 68 L64 76 L72 70 L80 78"
+        stroke="#ff3300" stroke-width="1.5" fill="none" opacity="0.9"/>
+
+  <!-- Lava glow at crack -->
+  <circle cx="64" cy="73" r="3" fill="#ff4400" opacity="0.85"/>
+  <circle cx="64" cy="73" r="5" fill="#ff6600" opacity="0.35"/>
+
+  <!-- Atmosphere rim highlight -->
+  <circle cx="64" cy="64" r="36" fill="none"
+          stroke="#66aaff" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Meteor -->
+  <ellipse cx="100" cy="28" rx="5" ry="3" fill="#cc6622"
+           transform="rotate(-45 100 28)" opacity="0.9"/>
+  <line x1="112" y1="16" x2="102" y2="30"
+        stroke="#ffaa44" stroke-width="2" opacity="0.7"/>
+</svg>
