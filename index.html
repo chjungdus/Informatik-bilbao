@@ -3,134 +3,113 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Idea Lab 💡</title>
+  <title>Planet Destroyer: God of Catastrophes</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
 </head>
-<body class="light-mode">
+<body>
+  <!-- ===== 3D CANVAS ===== -->
+  <canvas id="game-canvas"></canvas>
 
-  <!-- ===== HEADER ===== -->
-  <header class="header">
-    <div class="header__inner">
-      <div class="header__logo">
-        <span class="logo-icon">💡</span>
-        <h1 class="logo-text">Idea Lab</h1>
-      </div>
-      <button id="theme-toggle" class="btn btn--icon" aria-label="Modus wechseln" title="Modus wechseln">
-        <span id="theme-icon">🌙</span>
-      </button>
+  <!-- ===== TOP BAR ===== -->
+  <div id="top-bar">
+    <div id="title-section">
+      <h1>PLANET DESTROYER</h1>
+      <span id="subtitle">God of Catastrophes</span>
     </div>
-  </header>
+    <div id="targeting-label" class="hidden">
+      TARGETING — Click planet to strike | ESC to cancel
+    </div>
+  </div>
 
-  <!-- ===== MAIN ===== -->
-  <main class="main">
+  <!-- ===== STATS PANEL (left) ===== -->
+  <div id="stats-panel" class="panel">
+    <h2 class="panel-title">PLANET STATUS</h2>
+    <div class="separator"></div>
 
-    <!-- Formular: Neue Idee hinzufügen -->
-    <section class="section section--form" aria-labelledby="form-heading">
-      <h2 id="form-heading" class="section__title">Neue Idee hinzufügen</h2>
-      <form id="idea-form" class="idea-form" novalidate>
-
-        <div class="form-group">
-          <label for="idea-title">Titel *</label>
-          <input
-            type="text"
-            id="idea-title"
-            name="title"
-            placeholder="Kurzer, prägnanter Titel"
-            maxlength="80"
-            required
-          />
-          <span class="error-msg" id="title-error"></span>
-        </div>
-
-        <div class="form-group">
-          <label for="idea-desc">Beschreibung *</label>
-          <textarea
-            id="idea-desc"
-            name="description"
-            placeholder="Beschreibe deine Idee kurz…"
-            maxlength="300"
-            rows="3"
-            required
-          ></textarea>
-          <span class="char-counter" id="desc-counter">0 / 300</span>
-          <span class="error-msg" id="desc-error"></span>
-        </div>
-
-        <div class="form-group">
-          <label for="idea-category">Kategorie *</label>
-          <select id="idea-category" name="category" required>
-            <option value="">– Bitte wählen –</option>
-            <option value="Technologie">Technologie</option>
-            <option value="Design">Design</option>
-            <option value="Bildung">Bildung</option>
-            <option value="Gesellschaft">Gesellschaft</option>
-            <option value="Umwelt">Umwelt</option>
-            <option value="Sonstiges">Sonstiges</option>
-          </select>
-          <span class="error-msg" id="category-error"></span>
-        </div>
-
-        <button type="submit" class="btn btn--primary btn--full">
-          ➕ Idee einreichen
-        </button>
-      </form>
-    </section>
-
-    <!-- Steuerleiste: Filter + Sortierung -->
-    <section class="section section--controls" aria-label="Filter und Sortierung">
-      <div class="controls">
-
-        <div class="controls__group">
-          <label for="filter-category" class="controls__label">Kategorie:</label>
-          <select id="filter-category" class="controls__select">
-            <option value="all">Alle</option>
-            <option value="Technologie">Technologie</option>
-            <option value="Design">Design</option>
-            <option value="Bildung">Bildung</option>
-            <option value="Gesellschaft">Gesellschaft</option>
-            <option value="Umwelt">Umwelt</option>
-            <option value="Sonstiges">Sonstiges</option>
-          </select>
-        </div>
-
-        <div class="controls__group">
-          <label for="sort-order" class="controls__label">Sortieren nach:</label>
-          <select id="sort-order" class="controls__select">
-            <option value="newest">Neueste zuerst</option>
-            <option value="popular">Beliebteste zuerst</option>
-            <option value="oldest">Älteste zuerst</option>
-          </select>
-        </div>
-
-        <div class="controls__group controls__group--count">
-          <span id="idea-count" class="idea-count">0 Ideen</span>
-        </div>
-
+    <div class="stat-row">
+      <span class="stat-label">HEALTH</span>
+      <div class="bar-container">
+        <div id="health-bar" class="bar bar-green" style="width:100%"></div>
       </div>
-    </section>
-
-    <!-- Ideen-Liste -->
-    <section class="section section--ideas" aria-label="Ideen-Liste">
-      <div id="ideas-container" class="ideas-grid">
-        <!-- Karten werden per JavaScript eingefügt -->
+      <span id="health-val" class="stat-value">100</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">ATMOSPHERE</span>
+      <div class="bar-container">
+        <div id="atmo-bar" class="bar bar-blue" style="width:100%"></div>
       </div>
-      <!-- Leerer Zustand -->
-      <div id="empty-state" class="empty-state" hidden>
-        <p class="empty-state__icon">🗒️</p>
-        <p class="empty-state__text">Noch keine Ideen vorhanden.<br>Sei der Erste!</p>
+      <span id="atmo-val" class="stat-value">100</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">BIOSPHERE</span>
+      <div class="bar-container">
+        <div id="bio-bar" class="bar bar-teal" style="width:100%"></div>
       </div>
-    </section>
+      <span id="bio-val" class="stat-value">75</span>
+    </div>
 
-  </main>
+    <div class="separator"></div>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <p>Idea Lab &copy; 2024 – Deine Ideen, deine Zukunft.</p>
-  </footer>
+    <div class="stat-text"><span class="stat-label">TEMP:</span> <span id="temp-val">15.0°C</span></div>
+    <div class="stat-text"><span class="stat-label">POPULATION:</span> <span id="pop-val">0</span></div>
+    <div class="stat-text"><span class="stat-label">CITIES:</span> <span id="city-val">0 / 0</span></div>
+    <div class="stat-text"><span class="stat-label">AVG TECH:</span> <span id="tech-val">1.0</span></div>
 
-  <!-- Toast-Benachrichtigung -->
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <div class="separator"></div>
 
-  <script src="app.js"></script>
+    <div class="stat-row">
+      <span class="stat-label">COSMIC ENERGY</span>
+      <div class="bar-container">
+        <div id="energy-bar" class="bar bar-purple" style="width:100%"></div>
+      </div>
+      <span id="energy-val" class="stat-value">100</span>
+    </div>
+  </div>
+
+  <!-- ===== ABILITIES PANEL (bottom) ===== -->
+  <div id="abilities-panel" class="panel">
+    <h2 class="panel-title">COSMIC POWERS</h2>
+    <div class="separator"></div>
+    <div id="abilities-row">
+      <!-- Filled by JavaScript -->
+    </div>
+  </div>
+
+  <!-- ===== NOTIFICATIONS (top-right) ===== -->
+  <div id="notifications"></div>
+
+  <!-- ===== SPEED CONTROLS (bottom-right) ===== -->
+  <div id="speed-panel" class="panel">
+    <span class="speed-label">SPEED:</span>
+    <button class="speed-btn" data-speed="0.5">x0.5</button>
+    <button class="speed-btn active" data-speed="1">x1</button>
+    <button class="speed-btn" data-speed="2">x2</button>
+    <button class="speed-btn" data-speed="4">x4</button>
+    <button class="speed-btn" id="pause-btn">PAUSE</button>
+  </div>
+
+  <!-- ===== HELP BAR (bottom center) ===== -->
+  <div id="help-bar">
+    Left-drag: Rotate | Scroll: Zoom | Click ability then click planet | Keys 1-8: Abilities | Space: Pause
+  </div>
+
+  <!-- ===== GAME OVER OVERLAY ===== -->
+  <div id="game-over" class="hidden">
+    <h1>THE PLANET HAS BEEN DESTROYED</h1>
+    <p>All civilizations have perished in your cosmic wrath.</p>
+    <button onclick="location.reload()">REBIRTH — New Planet</button>
+  </div>
+
+  <!-- ===== THREE.JS from CDN ===== -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.163.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.163.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module" src="app.js"></script>
 </body>
 </html>
